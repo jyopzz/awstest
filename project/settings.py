@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#0gq%@*=xo^%sf_3pxpko2ld&2yb5-_2n4z*%sy)ylx%@#xukb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 if not DEBUG:
     EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST_USER="jyothisjoseph.jyopzz@mail.com"
@@ -35,7 +35,7 @@ if not DEBUG:
 else :
     EMAIL_BACKEND=("django.core.mail.backends.console.EmailBackend")
 
-ALLOWED_HOSTS = [ '3.83.123.141' ]
+ALLOWED_HOSTS = [ ]
 
 
 # Application definition
