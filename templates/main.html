@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Main</title>
+</head>
+
+<body>
+  <h2>Main Page</h2>
+  <form action="insert/" method="post" enctype="multipart/form-data"> {% csrf_token %} <label>Name</label>
+    <input type="text" name="name1" />
+    <label>Upload image</label>
+    <input type="file" name="img" />
+    <input type="submit" value="done" />
+  </form>
+  <p><a href="{% url 'logout' %}">Logout</a></p> {% for g in details1 %} 
+  <h5>{{g.id}}</h5>
+  <h4>{{ g.name }}</h4>
+  <img src="{{ g.image.url }}" width="200px" height="200px" />
+  <br />
+  <a href="/edit/{{ g.id }}/">EDIT</a>
+  <a href="/delete/{{ g.id }}/">DELETE</a>
+  {% endfor %}
+
+  
+</body>
+</script>
+<script src="{% static 'js/main.js'%}"></script>
+
+</html>
