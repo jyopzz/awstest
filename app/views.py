@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate,login
 from .form import LoginForm
 from django.http import HttpResponse
 from .models import Getnamemod,details
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -27,14 +28,14 @@ def loginn(request):
         form=LoginForm()
 
     return render(request,'login.html',{'form':form})
-
+@login_required()
 def main(request):
    
     data={"details1":details.objects.all()}
 
     return render(request,'main.html',data)
 
-
+@login_required()
 def insertdata(request):
     if request.method=="POST":
         name=request.POST.get('name1')
@@ -45,7 +46,7 @@ def insertdata(request):
         detailsobj.image=image
         detailsobj.save()
     return redirect(main)
-
+@login_required()
 def edit(request,id):
     if request.method=="POST":
         name=request.POST.get('name1')
@@ -68,7 +69,7 @@ def edit(request,id):
 
     
 
-
+@login_required()
 def delete(request,id):
     data=details.objects.get(id=id)
     data.delete()
